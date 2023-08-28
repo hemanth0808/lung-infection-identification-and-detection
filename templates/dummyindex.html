@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <style>   
+      body {
+        background-color: #5edcc97d;
+        font-family: Arial, Helvetica, sans-serif;
+      }     
+      h1 {
+        color: #333;
+        text-align: center;
+        text-shadow: 2px 2px #ddd;
+      }     
+      form {
+        margin: 0 auto;
+        width: 50%;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        background-color: #ffffff;
+      }    
+      label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #40aad4;
+        display: block;
+        margin-bottom: 10px;
+      }     
+      input[type=file] {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #ddd;
+        background-color: #fff;
+      }
+      input[type=submit] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #626262;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }     
+      input[type=submit]:hover {
+        background-color: #0f0202;
+      }
+      img.center {
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+      .container {
+        position: relative;
+        text-align: center;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+      }
+      .column1, .column {
+        flex-basis: 50%;
+      }
+      .column1 {
+        text-align: right;
+        padding-right: 10px;
+      }
+      .column {
+        text-align: left;
+        padding-left: 10px;
+      }
+      .centertopinput{
+        position: absolute;
+        top: 8%;
+        left: 39%;
+        transform: translate(-50%, -50%);
+      }
+      .centertopsegmented{
+        position: absolute;
+        top: 8%;
+        left: 61%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <title>Lung Infection Segmentation</title>
+  </head>
+  <body>
+    <h1>Lung Infection Segmentation</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <label for="image">Upload an image:</label><br>
+      <input type="file" name="file"><br><br>
+      <input type="submit" value="Diagonise">
+    </form>
+
+    {% if img_str %}
+    <div class="container">
+      <div class="column1">  
+        <img src="data:image/png;base64,{{ img_str_input }}" style="width:250px;height:250px; border-radius: 10px;"/>
+        <div class="centertopinput">Input Image</div>
+      </div>
+      <div class="column">
+        <img src="data:image/png;base64,{{ img_str }}" style="width:250px;height:250px; border-radius: 10px;"/>
+        <div class="centertopsegmented">Segmented Image</div>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>

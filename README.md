@@ -1,1 +1,1 @@
-# lung-infection-identification-and-detection
+#lung infection identification and detection.
